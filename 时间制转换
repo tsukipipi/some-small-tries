@@ -4,14 +4,23 @@ using namespace std;
 int main()
 {
     string time;
-    int a;
+    int temp;
     cout<<"Please input the time which you want to convert to military time:";
     cin>>time;
     if(time[8]=='P')//如果是PM，将时间加上12，改变第一和二两个字符
     {
-        a=(time[0]-48)*10+(time[1]-48)+12;
-        time[0]=a/10+48;
-        time[1]=a%10+48;
+        if((time[0]-48)==1&&(time[1]-48)==2);//12:xx:xxPM是一种特殊情况，不需要进行转化
+        else
+        {
+            temp=(time[0]-48)*10+(time[1]-48)+12;
+            time[0]=temp/10+48;
+            time[1]=temp%10+48;
+        }
+    }
+    else if((time[0]-48)==1&&(time[1]-48)==2)//12:xx:xxAM是另一种特殊情况，表示的时间为00:xx:xx
+    {
+        time[0]=48;
+        time[1]=48;
     }
     time[8]='\0';   //消去PM或AM两个字符
     time[9]='\0';
