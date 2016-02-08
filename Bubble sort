@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int array[10],i;
+    cout<<"Please input 10 numbers:";
+    for(i=0;i<10;i++)
+        cin>>array[i];
+    bubble_sort(array,10);
+    cout<<"The sorted array:";
+    for(i=0;i<10;i++)
+        cout<<array[i]<<' ';
+    cout<<endl;
+    return 0;
+}
+void bubble_sort(int array[],int n)
+{
+    int i,j;
+    for(i=0;i<n-1;i++)              //从0开始，共进行n-1轮比较
+        for(j=0;j<n-i-1;j++)        //每轮比较n-i次，比较结果使小数沉底
+            if(array[j]<array[j+1])
+            {
+                array[j]^=array[j+1];//位运算交换两数的值
+                array[j+1]^=array[j];
+                array[j]^=array[j+1];
+            }
+}
