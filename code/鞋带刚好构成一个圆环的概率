@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    double n,p=1;
+    cout<<"Please input the number of shoelaces:";
+    cin>>n;
+
+    for(;n>1;n--)//每连接一根鞋带，n-1，用p来计算刚好连成一圈的概率直到剩下最后一根鞋带即刚好与第一根鞋带相连
+    {
+        p=p*(2*n-2)/(2*n-1);
+    }
+    cout<<"The probability to make a ring is:"<<p<<endl;
+    return 0;
+}

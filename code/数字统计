@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a,b,n,k,i=0;
+    cout<<"请输入一个范围[a,b]:";
+    cin>>a>>b;
+    for(n=a;n<=b;n++)
+    {
+        if(n<10&&n%10==2)i++;   //当n小于10时，判断n是否为2并统计2的数目
+        else                    //当n大于9时，从各位到十位再到百位……依次判断各个位置上的数字是否为2，并统计2的数目
+        {
+            k=n;
+            for(;k>0;k/=10)    //依次取个十百……位进行判断
+                if(k%10==2)i++;
+        }
+    }
+    cout<<"2出现的次数为:"<<i<<"次."<<endl;
+    return 0;
+}
